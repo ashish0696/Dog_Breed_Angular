@@ -34,7 +34,7 @@ export class DogBreedsTableComponent implements OnInit {
     this.loadBreeds(0);
     
     
-    this.dogBreedsService.pagination$.subscribe(paginationInfo => {
+    this.dogBreedsService.paginations.subscribe(paginationInfo => {
       this.pagination.set(paginationInfo);
     });
   }

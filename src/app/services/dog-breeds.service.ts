@@ -19,7 +19,7 @@ export class DogBreedsService {
     totalPages: 0
   });
 
-  pagination$ = this.paginationSubject.asObservable();
+  paginations = this.paginationSubject.asObservable();
 
   getBreeds(page: number = 0, limit: number = 10): Observable<DogBreed[]> {
     const params = new HttpParams()
