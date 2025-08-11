@@ -1,0 +1,247 @@
+.dog-breeds-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+/* Loading styles */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error styles */  
+.error {
+  text-align: center;
+  padding: 30px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  color: #721c24;
+  margin-bottom: 20px;
+}
+
+.retry-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.retry-btn:hover {
+  background-color: #c82333;
+}
+
+/* Pagination info */
+.pagination-info {
+  margin-bottom: 15px;
+  color: #666;
+  text-align: right;
+}
+
+/* Table styles */
+.table-container {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.breeds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.breeds-table th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.breeds-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.breeds-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.breed-name {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.weight-info, .height-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric {
+  font-size: 12px;
+  color: #666;
+}
+
+.bred-for, .temperament {
+  max-width: 200px;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.temperament {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.page-btn {
+  background-color: white;
+  color: #007bff;
+  border: 2px solid #007bff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  min-width: 40px;
+}
+
+.page-btn:hover {
+  background-color: #e7f1ff;
+  transform: translateY(-1px);
+}
+
+.page-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination-summary {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dog-breeds-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .breeds-table {
+    font-size: 12px;
+  }
+
+  .breeds-table th,
+  .breeds-table td {
+    padding: 8px 4px;
+  }
+
+  .bred-for, .temperament {
+    max-width: 150px;
+    font-size: 12px;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .page-numbers {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .breeds-table th,
+  .breeds-table td {
+    padding: 6px 3px;
+  }
+
+  .pagination-btn, .page-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}

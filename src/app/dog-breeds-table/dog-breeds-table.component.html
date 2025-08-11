@@ -1,0 +1,94 @@
+<div class="dog-breeds-container">
+  <h1>Dog Breeds Directory</h1>
+  
+  <div *ngIf="loading()" class="loading">
+    <div class="spinner"></div>
+    <p>Loading dog breeds...</p>
+  </div>
+
+  <div *ngIf="error()" class="error">
+    <p>{{ error() }}</p>
+    <button (click)="loadBreeds(currentPage())" class="retry-btn">Retry</button>
+  </div>
+
+  <div *ngIf="!loading() && !error()" class="content">
+    <div class="pagination-info">
+      <!-- <p>
+        Showing {{ currentPage() * pagination().itemsPerPage + 1 }} - 
+        {{ Math.min((currentPage() + 1) * pagination().itemsPerPage, pagination().totalItems) }} 
+        of {{ pagination().totalItems }} breeds
+      </p> -->
+    </div>
+
+    <div class="table-container">
+      <table class="breeds-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Weight (Imperial/Metric)</th>
+            <th>Height (Imperial/Metric)</th>
+            <th>Breed Group</th>
+            <th>Life Span</th>
+            <th>Bred For</th>
+            <th>Temperament</th>
+            <!-- <th>Origin</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let breed of breeds(); trackBy: trackByBreedId">
+            <td>{{ breed.id }}</td>
+            <td class="breed-name">{{ breed.name }}</td>
+            <td>
+              <div class="weight-info">
+                <div>{{ breed.weight.imperial }} lbs</div>
+                <div class="metric">{{ breed.weight.metric }} kg</div>
+              </div>
+            </td>
+            <td>
+              <div class="height-info">
+                <div>{{ breed.height.imperial }} in</div>
+                <div class="metric">{{ breed.height.metric }} cm</div>
+              </div>
+            </td>
+            <td>{{ breed.breed_group || 'N/A' }}</td>
+            <td>{{ breed.life_span || 'N/A' }}</td>
+            <td class="bred-for">{{ breed.bred_for || 'N/A' }}</td>
+            <td class="temperament">{{ breed.temperament || 'N/A' }}</td>
+            <!-- <td>{{ breed.origin || 'N/A' }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination-controls">
+      <button 
+        (click)="onPrevPage()" 
+        [disabled]="!hasPrevPage()"
+        class="pagination-btn">
+        Previous
+      </button>
+
+      <div class="page-numbers">
+        <button 
+          *ngFor="let pageNum of getPageNumbers()"
+          (click)="onPageChange(pageNum)"
+          [class.active]="pageNum === currentPage()"
+          class="page-btn">
+          {{ pageNum + 1 }}
+        </button>
+      </div>
+
+      <button 
+        (click)="onNextPage()" 
+        [disabled]="!hasNextPage()"
+        class="pagination-btn">
+        Next
+      </button>
+    </div>
+
+    <div class="pagination-summary">
+      Page {{ currentPage() + 1 }} of {{ totalPages() }}
+    </div>
+  </div>
+</div>
